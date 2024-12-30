@@ -1,7 +1,7 @@
 import { cart } from "../../data/cart.js";
-import { getProduct, products } from "../../data/products.js";
+import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
-import { deliveryOptions, getDeliverOption } from "../../data/deliveryOptions.js";
+import { getDeliverOption } from "../../data/deliveryOptions.js";
 
 export function renderPaymentSummary() {
     let productPriceCents = 0;
@@ -56,6 +56,4 @@ export function renderPaymentSummary() {
           </button> 
     `;
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
-   
-    
 }
