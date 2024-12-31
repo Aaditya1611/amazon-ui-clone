@@ -6,7 +6,7 @@ import { deliveryOptions , getDeliverOption } from '../../data/deliveryOptions.j
 import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary() {
-
+0
 let cartSummaryHTML = ' ';
 
 cart.forEach((cartItem) => {
