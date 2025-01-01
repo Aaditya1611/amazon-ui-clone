@@ -1,6 +1,6 @@
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import { loadProducts } from "../data/products.js";
+import { loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 //import '../data/cart-class.js';
 //import '../data/backend.js';
@@ -8,12 +8,13 @@ import { loadCart } from "../data/cart.js";
 Promise.all([       // this creates an array of promises and wait for all the promises to finish at the same time 
                     // this is more efficient, since we dont have to wait for all the promises to finish one by one
 
-    new Promise((resolve) => {
+    // new Promise((resolve) => {
     
-        loadProducts(() => {
-            resolve('value1'); // we can pass a value to resolve 
-        });
-    }),
+    //     loadProducts(() => {
+    //         resolve('value1'); // we can pass a value to resolve 
+    //     });
+    // }),
+    loadProductsFetch(),
     new Promise((resolve) => {
         loadCart(() => {
             resolve();
