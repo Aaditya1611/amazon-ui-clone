@@ -14,8 +14,8 @@ async function loadPage() {  // async is basically a shortcut for promise, behin
                                 // we can only use await only inside the async // the closest function has to be await
     await new Promise((resolve, reject) => {
         loadCart(() => {
-            reject('error')
-            //resolve();
+            //reject('error')
+            resolve();
         });
         });
     } catch(error){

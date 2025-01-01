@@ -762,7 +762,7 @@ export let products = [];
 
 export function loadProductsFetch() {
 
-  const promise = fetch('https://error.supersimplebackend.dev/products').then((response) => {     // by default fetch makes a GET request // fetch uses a promise to wait for a request instead of callback
+  const promise = fetch('https://supersimplebackend.dev/products').then((response) => {     // by default fetch makes a GET request // fetch uses a promise to wait for a request instead of callback
    return response.json()
   }).then((productData) => {
     products = productData.map((productDetails) => {
