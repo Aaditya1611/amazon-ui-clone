@@ -8,17 +8,22 @@ import { loadCart } from "../data/cart.js";
 async function loadPage() {  // async is basically a shortcut for promise, behind the scenes it returns a promise 
     
     //return 'value2' // this is equivalent to the resolve() value
+    try{
+        //throw 'error occured';
     await loadProductsFetch();  // we dont have to write a .then(() => {}) function if we are using await, its a basically shortcut for .then()
-                                // we can only use await only inside the async
-    await new Promise((resolve) => {
+                                // we can only use await only inside the async // the closest function has to be await
+    await new Promise((resolve, reject) => {
         loadCart(() => {
-            resolve();
+            reject('error')
+            //resolve();
         });
         });
+    } catch(error){
+        console.log(error, 'please try again later')
+    }
     renderOrderSummary();
     renderPaymentSummary();
 }
-
 loadPage();
 
 

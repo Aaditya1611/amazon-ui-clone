@@ -762,7 +762,7 @@ export let products = [];
 
 export function loadProductsFetch() {
 
-  const promise = fetch('https://supersimplebackend.dev/products').then((response) => {     // by default fetch makes a GET request // fetch uses a promise to wait for a request instead of callback
+  const promise = fetch('https://error.supersimplebackend.dev/products').then((response) => {     // by default fetch makes a GET request // fetch uses a promise to wait for a request instead of callback
    return response.json()
   }).then((productData) => {
     products = productData.map((productDetails) => {
@@ -773,7 +773,9 @@ export function loadProductsFetch() {
     });
     console.log('load products')
     
-  });
+  })/*.catch((error) => {
+    console.log('Unexpected error, Please try again later.', error)
+  })*/
 
   return promise;
 
@@ -785,20 +787,24 @@ loadProductsFetch().then(() => {
 });
 */
 
-// export function loadProducts(fun) {
-//   const xhr = new XMLHttpRequest(); //xmlHttpRequests are callback function, use fetch instead of xhr
+export function loadProducts(fun) {
+  const xhr = new XMLHttpRequest(); //xmlHttpRequests are callback function, use fetch instead of xhr
 
-//   xhr.addEventListener('load' , () => {
-//     products = JSON.parse(xhr.response).map((productDetails) => {
-//       if(productDetails.type === 'clothing'){
-//         return new Clothing(productDetails);
-//       }
-//       return new Product(productDetails);
-//     });
-//     console.log('load products')
-//     fun(); // this is also called a callback function // a function to run in future
-//   });
+  xhr.addEventListener('load' , () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+    console.log('load products')
+    fun(); // this is also called a callback function // a function to run in future
+  });
 
-//   xhr.open('GET', 'https://supersimplebackend.dev/products')
-//   xhr.send();
-// }
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error, Please try again later.')
+  })
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products')
+  xhr.send();
+}
