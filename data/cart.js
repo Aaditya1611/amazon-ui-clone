@@ -17,9 +17,9 @@ if (!cart) {
   //   deliveryOptionId: '2'
   // }];
 
-  EmptyCartHtml = 
-  `<div class="empty-cart empty-cart-style">Your Cart is empty</div>`
-  document.querySelector('.js-empty-cart').innerHTML = EmptyCartHtml
+  // EmptyCartHtml = 
+  // `<div class="empty-cart empty-cart-style">Your Cart is empty</div>`
+  // document.querySelector('.js-empty-cart').innerHTML = EmptyCartHtml
 }
 }
 
